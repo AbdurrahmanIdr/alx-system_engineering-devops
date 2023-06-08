@@ -9,15 +9,18 @@ def recurse(subreddit, hot_list=[], after="", count=0):
 
     Args:
         subreddit (str): The name of the subreddit.
-        hot_list (list): List to store the titles of hot articles (default=[]).
-        after (str): Token for pagination, indicating the starting point (default="").
-        count (int): Number of articles already retrieved (default=0).
+        hot_list (list):
+            List to store the titles of hot articles (default=[]).
+        after (str): Token for pagination,
+        indicating the starting point (default="").
+        count (int):
+            Number of articles already retrieved (default=0).
 
     Returns:
         list: List containing the titles of all hot articles.
               Returns None if the subreddit is not valid.
     """
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
     headers = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
@@ -39,9 +42,8 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     for c in results.get("children"):
         hot_list.append(c.get("data").get("title"))
 
-    # Recursively call the function if there are more articles to retrieve
+    # Recursively call the function
+    #   if there are more articles to retrieve
     if after is not None:
         return recurse(subreddit, hot_list, after, count)
-    
     return hot_list
-
