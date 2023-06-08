@@ -1,6 +1,6 @@
-#API Advanced Project
+## API Advanced Project
 
-This project focuses on practicing API calls using the Reddit API. The provided code allows you to query the Reddit API and retrieve the number of subscribers for a given subreddit.
+This project focuses on practicing API calls using the Reddit API. The provided code allows you to query the Reddit API.
 
 ## Requirements
 
