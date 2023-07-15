@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
-#This bash scripts shows all ipv4
+# Script: 1-show_attached_IPs
+# Description: Display all active IPv4 IPs on the machine
 
-hostname -I
+# Use ifconfig to get the network interface information
+ifconfig_output=$(ifconfig)
+
+# Use grep and awk to extract the IPv4 addresses
+ipv4_addresses=$(echo "$ifconfig_output" | grep -oE 'inet addr:[0-9.]+')
+
+# Use sed to remove the "inet addr:" prefix from each IP address
+formatted_addresses=$(echo "$ipv4_addresses" | sed 's/inet addr://')
+
+# Display the formatted IP addresses
+echo "$formatted_addresses"
+
